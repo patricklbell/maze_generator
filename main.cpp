@@ -13,7 +13,7 @@
 using vec2=std::array<int, 2>;
 
 inline constexpr std::array<vec2, 4> getNeighbours(int x, int y){
-    return {{{x, y+1},{x, y-1},{x+1, y},{x+1, y}}};
+    return {{{x, y+1},{x, y-1},{x+1, y},{x-1, y}}};
 }
 
 int main()
@@ -23,18 +23,17 @@ int main()
     std::array<vec2, 4> neighbours;
 
     // pick a cell to start, in this case the bottom left, add neighbours
-    cells[1][1] = true;
-    neighbours = std::move(getNeighbours(1, 1)); // look it &&
+    int x = std::rand() % W;
+    int y = std::rand() % H;
+    cells[x][y] = true;
+    neighbours = std::move(getNeighbours(x, y)); // look it &&
     wallList.insert(wallList.end(), neighbours.cbegin(), neighbours.cend());
-
-    // int choosen[2] = {rand() % W + 1, rand() % H + 1};
-    // cells[choosen[0]*2][choosen[1]*2] = true;
 
     while (wallList.size() != 0) {
         // choose random wall from list
         int pos = std::rand() % wallList.size();
-        int x = wallList[pos][0];
-        int y = wallList[pos][1];
+        x = wallList[pos][0];
+        y = wallList[pos][1];
 
         // test if edge, if so remove wall from list
         if (!(x == 0 || x == W - 1 || y == 0 || y == H - 1)){
