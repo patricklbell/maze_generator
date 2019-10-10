@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build program",
+        "type": "shell",
+        "command": "g++",
+        "args": [
+          "-g",
+          "-o",
+          "Build\\prog",
+          "main.cpp"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": [
+          "$gcc"
+        ]
+      },
+      {
+        "label": "clang Debug",
+        "type": "shell",
+        "command": "clang++",
+        "args": [
+          "main.cpp",
+          "-target",
+          "i686-pc-windows-gnu",
+          "-o",
+          "Build\\prog.exe"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  }
