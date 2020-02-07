@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
+#include <ctime>
 #include <iterator>
 #include <array>
 #include "bitmap_image.hpp"
@@ -18,6 +19,9 @@ inline constexpr std::array<vec2, 4> getNeighbours(int x, int y){
 
 int main()
 {
+    // seed std rand
+    std::srand(std::time(0));
+    
     bool cells[W][H] = {{false}};
     std::vector<vec2> wallList;
     std::array<vec2, 4> neighbours;
